@@ -28,12 +28,12 @@ export default function SignIn() {
               <form>
                 <div className="mb-5">
                   <label className="mb-1 block font-medium text-xs text-black dark:text-white">
-                    Phone Number
+                   User Name
                   </label>
                   <div className="relative">
                     <input
                       type="text"
-                      placeholder="Enter your phone number"
+                      placeholder=" User name"
                       className="w-full rounded-lg border-[1.5px] border-stroke bg- text-xs py-2.5 px-3 text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
                     />
 

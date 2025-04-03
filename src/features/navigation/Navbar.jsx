@@ -1,36 +1,45 @@
-"use client"
 
-import { useState, useEffect } from "react"
-import { NavLink, useLocation } from "react-router-dom"
+import { useState, useEffect } from "react";
+import { NavLink, useLocation } from "react-router-dom";
 
 const Navbar = () => {
-  const [isOpen, setIsOpen] = useState(false)
-  const [scrolled, setScrolled] = useState(false)
-  const location = useLocation()
+  const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const location = useLocation();
 
   // Close mobile menu when route changes
   useEffect(() => {
-    setIsOpen(false)
-  }, [location])
+    setIsOpen(false);
+  }, [location]);
 
   // Add shadow on scroll
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 10) {
-        setScrolled(true)
+        setScrolled(true);
       } else {
-        setScrolled(false)
+        setScrolled(false);
       }
-    }
+    };
 
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   // Toggle mobile menu
   const toggleMenu = () => {
-    setIsOpen(!isOpen)
-  }
+    setIsOpen(!isOpen);
+  };
+
+  // Navigation links configuration - centralized for both desktop and mobile
+  const navLinks = [
+    { path: "/home", label: "Home" },
+    { path: "/about", label: "About" },
+    { path: "/services", label: "Services" },
+    { path: "/contact", label: "Contact" },
+    { path: "/todos", label: "Todos" },
+    { path: "/faq", label: "FAQ" },
+  ];
 
   return (
     <nav
@@ -51,69 +60,44 @@ const Navbar = () => {
             >
               <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"></path>
             </svg>
-            FitLife Oasis
+            CompanyName
           </NavLink>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
-            <NavLink
-              to="/home"
-              className={({ isActive }) =>
-                `text-gray-600 hover:text-primary transition-colors relative pb-1 ${isActive ? "text-primary" : ""}`
-              }
-            >
-              {({ isActive }) => (
-                <>
-                  Home
-                  {isActive && <span className="absolute bottom-0 left-0 w-full h-0.5 bg-primary"></span>}
-                </>
-              )}
-            </NavLink>
-            <NavLink
-              to="/about"
-              className={({ isActive }) =>
-                `text-gray-600 hover:text-primary transition-colors relative pb-1 ${isActive ? "text-primary" : ""}`
-              }
-            >
-              {({ isActive }) => (
-                <>
-                  About
-                  {isActive && <span className="absolute bottom-0 left-0 w-full h-0.5 bg-primary"></span>}
-                </>
-              )}
-            </NavLink>
-            <NavLink
-              to="/services"
-              className={({ isActive }) =>
-                `text-gray-600 hover:text-primary transition-colors relative pb-1 ${isActive ? "text-primary" : ""}`
-              }
-            >
-              {({ isActive }) => (
-                <>
-                  Services
-                  {isActive && <span className="absolute bottom-0 left-0 w-full h-0.5 bg-primary"></span>}
-                </>
-              )}
-            </NavLink>
-            <NavLink
-              to="/contact"
-              className={({ isActive }) =>
-                `text-gray-600 hover:text-primary transition-colors relative pb-1 ${isActive ? "text-primary" : ""}`
-              }
-            >
-              {({ isActive }) => (
-                <>
-                  Contact
-                  {isActive && <span className="absolute bottom-0 left-0 w-full h-0.5 bg-primary"></span>}
-                </>
-              )}
-            </NavLink>
-            <NavLink
-              to="/login"
-              className="bg-primary text-white px-4 py-2 rounded-md hover:bg-primary/90 transition-colors"
-            >
-              Login
-            </NavLink>
+            {/* Map through navigation links for desktop */}
+            {navLinks.map((link) => (
+              <NavLink
+                key={link.path}
+                to={link.path}
+                className={({ isActive }) =>
+                  `text-gray-600 hover:text-primary transition-colors relative pb-1 ${isActive ? "text-primary" : ""}`
+                }
+              >
+                {({ isActive }) => (
+                  <>
+                    {link.label}
+                    {isActive && <span className="absolute bottom-0 left-0 w-full h-0.5 bg-primary"></span>}
+                  </>
+                )}
+              </NavLink>
+            ))}
+            
+            {/* Auth buttons for desktop */}
+            <div className="flex items-center space-x-2">
+              <NavLink
+                to="/login"
+                className="text-primary hover:text-primary/80 transition-colors"
+              >
+                Login
+              </NavLink>
+              <NavLink
+                to="/signup"
+                className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-md transition-colors"
+              >
+                Sign Up
+              </NavLink>
+            </div>
           </div>
 
           {/* Mobile Menu Button */}
@@ -144,67 +128,53 @@ const Navbar = () => {
           </button>
         </div>
 
-        {/* Mobile Menu */}
+        {/* Mobile Menu - Fixed height issues and ensured all links are included */}
         <div
           id="mobile-menu"
           className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${
-            isOpen ? "max-h-64 opacity-100 mt-4" : "max-h-0 opacity-0"
+            isOpen ? "max-h-[500px] opacity-100 mt-4" : "max-h-0 opacity-0"
           }`}
           aria-hidden={!isOpen}
         >
           <div className="flex flex-col space-y-4 py-4">
-            <NavLink
-              to="/home"
-              className={({ isActive }) =>
-                `text-gray-600 hover:text-primary transition-colors px-2 py-1 ${
-                  isActive ? "text-primary border-l-4 border-primary pl-1" : ""
-                }`
-              }
-            >
-              Home
-            </NavLink>
-            <NavLink
-              to="/about"
-              className={({ isActive }) =>
-                `text-gray-600 hover:text-primary transition-colors px-2 py-1 ${
-                  isActive ? "text-primary border-l-4 border-primary pl-1" : ""
-                }`
-              }
-            >
-              About
-            </NavLink>
-            <NavLink
-              to="/services"
-              className={({ isActive }) =>
-                `text-gray-600 hover:text-primary transition-colors px-2 py-1 ${
-                  isActive ? "text-primary border-l-4 border-primary pl-1" : ""
-                }`
-              }
-            >
-              Services
-            </NavLink>
-            <NavLink
-              to="/contact"
-              className={({ isActive }) =>
-                `text-gray-600 hover:text-primary transition-colors px-2 py-1 ${
-                  isActive ? "text-primary border-l-4 border-primary pl-1" : ""
-                }`
-              }
-            >
-              Contact
-            </NavLink>
+            {/* Map through navigation links for mobile */}
+            {navLinks.map((link) => (
+              <NavLink
+                key={link.path}
+                to={link.path}
+                className={({ isActive }) =>
+                  `text-gray-600 hover:text-primary transition-colors px-2 py-1 ${
+                    isActive ? "text-primary border-l-4 border-primary pl-1" : ""
+                  }`
+                }
+                onClick={() => setIsOpen(false)}
+              >
+                {link.label}
+              </NavLink>
+            ))}
+            
+            {/* Auth links for mobile */}
             <NavLink
               to="/login"
-              className="bg-primary text-white px-4 py-2 rounded-md hover:bg-primary/90 transition-colors w-full text-center"
+              // className="text-primary hover:text-primary/80 transition-colors px-2 py-1"
+              className="bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-700 transition-colors mx-2 my-1"
+              onClick={() => setIsOpen(false)}
             >
               Login
+            </NavLink>
+            <NavLink
+              to="/signup"
+              className="bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-700 transition-colors mx-2 my-1"
+              onClick={() => setIsOpen(false)}
+            >
+              Sign Up
             </NavLink>
           </div>
         </div>
       </div>
     </nav>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;
 
