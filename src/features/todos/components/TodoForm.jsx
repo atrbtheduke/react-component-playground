@@ -5,7 +5,7 @@ const TodoForm = ({ onAddTodo }) => {
   const [input, setInput] = useState('');
   const [error, setError] = useState('');
 
-  // Handle form submission
+ 
   const handleSubmit = (e) => {
     e.preventDefault();
     
@@ -19,7 +19,7 @@ const TodoForm = ({ onAddTodo }) => {
     setError('');
   };
 
-  // Clear error when input changes
+ 
   useEffect(() => {
     if (input && error) {
       setError('');

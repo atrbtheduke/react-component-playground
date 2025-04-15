@@ -7,13 +7,10 @@ const useNavbar = () => {
   const [isOpen, setIsOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const location = useLocation()
-
-  // Close mobile menu when route changes
+ 
   useEffect(() => {
     setIsOpen(false)
   }, [location])
-
-  // Add shadow on scroll
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 10) {
@@ -22,16 +19,12 @@ const useNavbar = () => {
         setScrolled(false)
       }
     }
-
     window.addEventListener("scroll", handleScroll)
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
-
-  // Toggle mobile menu
   const toggleMenu = () => {
     setIsOpen(!isOpen)
   }
-
   return {
     isOpen,
     scrolled,

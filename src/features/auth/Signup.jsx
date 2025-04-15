@@ -58,7 +58,7 @@ const Signup = () => {
         // Simulation of  API call
         await new Promise(resolve => setTimeout(resolve, 1000));
         
-        // Save user data to localStorage (mock successful registration) which found on your browser 
+        // Save user data to localStorage (mock successful registration) which found on my browser 
         localStorage.setItem('user', JSON.stringify({
           username: values.username,
           email: values.email

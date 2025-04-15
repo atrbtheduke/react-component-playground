@@ -1,0 +1,29 @@
+commit 8ba98922b39e8378c34428b7c4657b56a02adcbd
+Author: beti <b27533183@gmail.com>
+Date:   Thu Apr 3 03:09:33 2025 -0700
+
+    integrating todolist app ,sign up or registration form  and acccordion for FAQ to the responsive Navabr
+
+commit b8c899146d719dbf6df1df2181c68e9d23fa8fbd
+Author: beti <b27533183@gmail.com>
+Date:   Wed Apr 2 05:50:09 2025 -0700
+
+    feat: Add responsive navbar with Home, About, Services, and Contact pages and Navbar and useNavbar in the navigation folder
+
+commit 4095df176acf4a1c25fad76013bc43b9eaf7d099
+Author: Ashuli <asmelashabrha15@gmail.com>
+Date:   Tue Apr 1 11:54:18 2025 +0300
+
+    update folder structure and routing
+
+commit 84b9aaedd32bd46ce724440b7ed39d0e6e35c107
+Author: Ashuli <asmelashabrha15@gmail.com>
+Date:   Mon Mar 31 17:07:23 2025 +0300
+
+    upload first file
+
+commit d4ef9ad50519ab0587c73d4b5954999f39f7262c
+Author: Ashuli <asmelashabrha15@gmail.com>
+Date:   Mon Mar 31 17:04:54 2025 +0300
+
+    first commit

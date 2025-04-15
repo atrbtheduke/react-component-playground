@@ -7,14 +7,14 @@ const TodoItem = ({ id, text, status, completed, alertTime, onToggle, onEdit, on
   const [editText, setEditText] = useState(text);
   const [showConfirm, setShowConfirm] = useState(false);
 
-  // Status classes for styling
+
   const statusClasses = {
     pending: 'bg-yellow-100 text-yellow-800',
     active: 'bg-blue-100 text-blue-800',
     completed: 'bg-green-100 text-green-800'
   };
 
-  // Handle save edit
+ 
   const handleSave = () => {
     if (editText.trim()) {
       onEdit(id, editText);
@@ -22,24 +22,24 @@ const TodoItem = ({ id, text, status, completed, alertTime, onToggle, onEdit, on
     }
   };
 
-  // Handle cancel edit
+
   const handleCancel = () => {
     setEditText(text);
     setIsEditing(false);
   };
 
-  // Handle delete confirmation
+
   const handleDeleteClick = () => {
     setShowConfirm(true);
   };
 
-  // Confirm delete
+ 
   const handleConfirmDelete = () => {
     onDelete(id);
     setShowConfirm(false);
   };
 
-  // Cancel delete
+
   const handleCancelDelete = () => {
     setShowConfirm(false);
   };
@@ -82,7 +82,7 @@ const TodoItem = ({ id, text, status, completed, alertTime, onToggle, onEdit, on
             </div>
           </div>
           
-          {/* Status and Alert Controls */}
+        
           <div className="flex justify-between items-center mt-2">
             <select
               value={status}
@@ -127,7 +127,7 @@ const TodoItem = ({ id, text, status, completed, alertTime, onToggle, onEdit, on
         </div>
       )}
 
-      {/* Delete Confirmation Dialog */}
+   
       {showConfirm && (
         <div className="mt-2 p-2 border border-red-200 rounded bg-red-50">
           <p className="text-sm text-red-600 mb-2">Are you sure you want to delete this task?</p>

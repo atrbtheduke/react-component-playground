@@ -16,10 +16,9 @@ const AlertButton = ({ todoId, currentAlert, onSetAlert }) => {
     setAlertDate(new Date(e.target.value));
   };
 
-  // Format date for datetime-local input
+
   const formatDateForInput = (date) => {
     const d = new Date(date);
-    // Format as YYYY-MM-DDThh:mm
     return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}T${String(d.getHours()).padStart(2, '0')}:${String(d.getMinutes()).padStart(2, '0')}`;
   };
 

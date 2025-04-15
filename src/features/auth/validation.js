@@ -27,7 +27,6 @@ export const signupSchema = yup.object({
     .required('Please confirm your password')
 });
 
-// Reusable login schema if needed
 export const loginSchema = yup.object({
   email: yup
     .string()

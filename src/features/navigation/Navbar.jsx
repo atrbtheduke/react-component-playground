@@ -1,37 +1,36 @@
+"use client"
 
-import { useState, useEffect } from "react";
-import { NavLink, useLocation } from "react-router-dom";
+import { useState, useEffect } from "react"
+import { NavLink, useLocation } from "react-router-dom"
 
 const Navbar = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
-  const location = useLocation();
+  const [isOpen, setIsOpen] = useState(false)
+  const [scrolled, setScrolled] = useState(false)
+  const location = useLocation()
 
-  // Close mobile menu when route changes
   useEffect(() => {
-    setIsOpen(false);
-  }, [location]);
+    setIsOpen(false)
+  }, [location])
 
-  // Add shadow on scroll
+ 
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 10) {
-        setScrolled(true);
+        setScrolled(true)
       } else {
-        setScrolled(false);
+        setScrolled(false)
       }
-    };
+    }
 
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+    window.addEventListener("scroll", handleScroll)
+    return () => window.removeEventListener("scroll", handleScroll)
+  }, [])
 
-  // Toggle mobile menu
   const toggleMenu = () => {
-    setIsOpen(!isOpen);
-  };
+    setIsOpen(!isOpen)
+  }
 
-  // Navigation links configuration - centralized for both desktop and mobile
+  // Responsive Navigation links 
   const navLinks = [
     { path: "/home", label: "Home" },
     { path: "/about", label: "About" },
@@ -39,21 +38,21 @@ const Navbar = () => {
     { path: "/contact", label: "Contact" },
     { path: "/todos", label: "Todos" },
     { path: "/faq", label: "FAQ" },
-  ];
+  ]
 
   return (
     <nav
       className={`fixed top-0 left-0 w-full z-50 bg-white transition-all duration-300 ${
-        scrolled ? "shadow-md py-2" : "py-4"
+        scrolled ? "shadow-md py-3" : "py-5"
       }`}
       aria-label="Main Navigation"
     >
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-5">
         <div className="flex justify-between items-center">
-          {/* Logo */}
+          {/* Home Logo */}
           <NavLink to="/home" className="text-xl font-bold text-gray-800 flex items-center">
             <svg
-              className="w-8 h-8 mr-2 text-primary"
+              className="w-8 h-8 mr-3 text-primary"
               fill="currentColor"
               viewBox="0 0 20 20"
               xmlns="http://www.w3.org/2000/svg"
@@ -71,7 +70,7 @@ const Navbar = () => {
                 key={link.path}
                 to={link.path}
                 className={({ isActive }) =>
-                  `text-gray-600 hover:text-primary transition-colors relative pb-1 ${isActive ? "text-primary" : ""}`
+                  `text-base text-gray-600 hover:text-primary transition-colors relative pb-2 px-3 ${isActive ? "text-primary" : ""}`
                 }
               >
                 {({ isActive }) => (
@@ -82,18 +81,15 @@ const Navbar = () => {
                 )}
               </NavLink>
             ))}
-            
+
             {/* Auth buttons for desktop */}
-            <div className="flex items-center space-x-2">
-              <NavLink
-                to="/login"
-                className="text-primary hover:text-primary/80 transition-colors"
-              >
+            <div className="flex items-center space-x-4">
+              <NavLink to="/login" className="text-base text-primary hover:text-primary/80 transition-colors px-3 py-2">
                 Login
               </NavLink>
               <NavLink
                 to="/signup"
-                className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-md transition-colors"
+                className="text-base bg-green-600 hover:bg-green-700 text-white px-5 py-3 rounded-md transition-colors"
               >
                 Sign Up
               </NavLink>
@@ -128,23 +124,23 @@ const Navbar = () => {
           </button>
         </div>
 
-        {/* Mobile Menu - Fixed height issues and ensured all links are included */}
+        {/* Mobile Menu ,  all links are included here */}
         <div
           id="mobile-menu"
           className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${
-            isOpen ? "max-h-[500px] opacity-100 mt-4" : "max-h-0 opacity-0"
+            isOpen ? "max-h-[500px] opacity-100 mt-5" : "max-h-0 opacity-0"
           }`}
           aria-hidden={!isOpen}
         >
-          <div className="flex flex-col space-y-4 py-4">
+          <div className="flex flex-col space-y-4 py-5">
             {/* Map through navigation links for mobile */}
             {navLinks.map((link) => (
               <NavLink
                 key={link.path}
                 to={link.path}
                 className={({ isActive }) =>
-                  `text-gray-600 hover:text-primary transition-colors px-2 py-1 ${
-                    isActive ? "text-primary border-l-4 border-primary pl-1" : ""
+                  `text-base text-gray-600 hover:text-primary transition-colors px-4 py-3 ${
+                    isActive ? "text-primary border-l-4 border-primary pl-3" : ""
                   }`
                 }
                 onClick={() => setIsOpen(false)}
@@ -152,19 +148,18 @@ const Navbar = () => {
                 {link.label}
               </NavLink>
             ))}
-            
+
             {/* Auth links for mobile */}
             <NavLink
               to="/login"
-              // className="text-primary hover:text-primary/80 transition-colors px-2 py-1"
-              className="bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-700 transition-colors mx-2 my-1"
+              className="text-base bg-green-600 text-white px-5 py-3 rounded-md hover:bg-green-700 transition-colors mx-4 my-2"
               onClick={() => setIsOpen(false)}
             >
               Login
             </NavLink>
             <NavLink
               to="/signup"
-              className="bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-700 transition-colors mx-2 my-1"
+              className="text-base bg-green-600 text-white px-5 py-3 rounded-md hover:bg-green-700 transition-colors mx-4 my-2"
               onClick={() => setIsOpen(false)}
             >
               Sign Up
@@ -173,8 +168,7 @@ const Navbar = () => {
         </div>
       </div>
     </nav>
-  );
-};
+  )
+}
 
-export default Navbar;
-
+export default Navbar

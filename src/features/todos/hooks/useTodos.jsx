@@ -1,23 +1,23 @@
 
 import { useState, useEffect, useCallback } from 'react';
 
+
 const useTodos = () => {
-  // Initialize state from localStorage with status support
   const [todos, setTodos] = useState(() => {
     const saved = localStorage.getItem('todos');
     return saved ? JSON.parse(saved).map(todo => ({
       ...todo,
-      status: todo.status || 'pending', // Default for old tasks
+      status: todo.status || 'pending', 
       createdAt: todo.createdAt || new Date().toISOString(),
       alertTime: todo.alertTime || null
     })) : [];
   });
 
-  // Persist todos to localStorage whenever they change
+  // Persist todos to localStorage whenever they change (permanet storage)
   useEffect(() => {
     const timer = setTimeout(() => {
       localStorage.setItem('todos', JSON.stringify(todos));
-    }, 300); // Debounce to reduce frequent writes
+    }, 300); 
     
     return () => clearTimeout(timer);
   }, [todos]);
@@ -90,7 +90,7 @@ const useTodos = () => {
     );
   }, []);
 
-  // Check for alerts that need to be triggered
+  // Check for alerts 
   useEffect(() => {
     const checkAlerts = setInterval(() => {
       let updatedTodos = false;
@@ -108,7 +108,7 @@ const useTodos = () => {
       if (updatedTodos) {
         setTodos(newTodos);
       }
-    }, 60000); // Check every minute
+    }, 60000);
 
     return () => clearInterval(checkAlerts);
   }, [todos]);

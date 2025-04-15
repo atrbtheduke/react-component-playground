@@ -96,8 +96,6 @@ const TodoList = () => {
             </div>
           </div>
         </div>
-
-        {/* Status Filter */}
         <div className="flex flex-wrap gap-2 mb-4">
           <div className="flex items-center">
             <span className="text-sm text-gray-500 mr-2">Filter:</span>
